@@ -1,0 +1,103 @@
+@import '../../pages/index';
+
+.row {
+    display: flex;
+    margin-bottom: 5%;
+    justify-content: space-evenly;
+    &.header {
+        font-size: 30px;
+        font-weight: 900;
+    }
+    > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &:first-child {
+            margin-right: 5%;
+        }
+    }
+    .rowLabel {
+        justify-content: center;
+        label {
+            margin-bottom: 10px;
+        }
+    }
+    .selectLabel {
+        margin-bottom: 15px;
+    }
+    input {
+        height: 50px;
+        font-size: 15px;
+        padding: 0 15px;
+        font-weight: 700;
+        justify-self: end;
+        border-radius: 3px;
+        border: 2px solid $app-light-purple;
+        &:hover, &:focus, &:focus-visible {
+            border: 2px solid $app-purple;
+        }
+    }
+    a {
+        font-weight: 600;
+        color: $app-green;
+        line-height: 40px;
+        align-self: flex-end;
+        &:hover {
+            cursor: pointer;
+            color: darken($app-green, 10);
+        }
+    }
+    .button {
+        height: 45px;
+        width: 175px;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        color: #ffffff;
+        border-radius: 30px;
+        background: $app-purple;
+        &:hover {
+            cursor: pointer;
+            box-shadow: 2px 2px 5px $app-purple;
+            background: darken($app-purple, 5);
+        }
+    }
+    &.interest {
+        text-align: right;
+    }
+}
+.loanDropdown__control {
+    outline: 2px solid $app-purple;
+    border: 2px solid $app-light-purple;
+    &:hover {
+        border: 2px solid $app-purple;
+    }
+}
+.loanDropdown__control--is-focused:hover {
+    border: 2px solid $app-purple;
+    box-shadow: 0 0 1px $app-purple;
+}
+.loanDropdown__indicator-separator {
+    background: none;
+}
+.loanDropdown__indicator, .loanDropdown__indicatorContainer {
+    color: #121212;
+}
+.loanDropdown__placeholder, .loanDropdown__single-value {
+    font-weight: 500;
+    color: #000000;
+}
+.slider {
+    .rc-slider-track {
+        background-color: $app-purple;
+    }
+    .rc-slider-handle {
+        border: 2px solid $app-purple;
+        &:hover, &:active {
+            box-shadow: 0 0 5px $app-light-purple;
+            border-color: darken($app-purple, 25);
+        }
+    }
+}

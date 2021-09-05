@@ -1,0 +1,26 @@
+$app-purple: #6667d1;
+$app-light-purple: lighten($app-purple, 20);
+$app-gray: #e6e6e6;
+$app-green: #56c290;
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: $app-gray;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+.main {
+    width: 70vw;
+    height: 70vh;
+    margin: 0 auto;
+    max-width: 600px;
+    min-width: 480px;    
+    min-height: 600px;
+    padding: 2vh 2vw;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px #c3c3c3;
+}
