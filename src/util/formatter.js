@@ -4,11 +4,17 @@ export const currencyFormatter = (number, max = null) => {
         if (max && formatVal > max) {
             formatVal = max;
         }
-        return new Intl.NumberFormat("nl", {
-            style: 'currency',
-            currency: 'EUR',
-            maximumFractionDigits: 0,
-        }).format(formatVal);
+        try {
+            return new Intl.NumberFormat("nl", {
+                style: 'currency',
+                currency: 'EUR',
+                maximumFractionDigits: 0,
+                minimumFractionDigits: 0,
+            }).format(formatVal);
+        } catch (err) {
+            console.log('Conversion failed: ', err);
+            return formatVal;
+        }
     }
 };
 

@@ -90,94 +90,93 @@ const LoanCalculator = () => {
 
     return (
         <Fragment>
-        <div className="row header">
-            Compile your business financing
-        </div>
-        <div className="row">
-            <div>
-                <label className="selectLabel">Purpose</label>
-                <Select
-                    placeholder="Choose a purpose"
-                    onChange={event => handleSelectChange(event, setPurpose)}
-                    options={purposeOptions()}
-                    classNamePrefix="loanDropdown"
-                />
+            <div className="row header">
+                Compile your business financing
             </div>
-            <div>
-                <label className="selectLabel">Legal Form</label>
-                <Select
-                    placeholder="Choose a form"
-                    onChange={event => handleSelectChange(event, setForm)}
-                    options={formOptions()}
-                    classNamePrefix="loanDropdown"
-                />
+            <div className="row">
+                <div>
+                    <label className="selectLabel">Purpose</label>
+                    <Select
+                        placeholder="Choose a purpose"
+                        onChange={event => handleSelectChange(event, setPurpose)}
+                        options={purposeOptions()}
+                        classNamePrefix="loanDropdown"
+                    />
+                </div>
+                <div>
+                    <label className="selectLabel">Legal Form</label>
+                    <Select
+                        placeholder="Choose a form"
+                        onChange={event => handleSelectChange(event, setForm)}
+                        options={formOptions()}
+                        classNamePrefix="loanDropdown"
+                    />
+                </div>
             </div>
-        </div>
-        <div className="row">
-            <div className="rowLabel">
-                <label>Financing</label>
+            <div className="row">
+                <div className="rowLabel">
+                    <label>Financing</label>
+                </div>
+                <div>
+                    <input
+                        id="financeAmountInput"
+                        ref={financeInputRef}
+                        type={inputFocus ? "number" : "text"}
+                        step={1000}
+                        value={inputFocus ? financeAmout : currencyFormatter(financeAmout, maxAmount)}
+                        onFocus={() => setInputFocus(true)}
+                        onBlur={() => {setInputFocus(false)}}
+                        onChange={event => handleFinanceValueChange(event)}
+                        max={maxAmount}
+                    />
+                </div>
             </div>
-            <div>
-                <input
-                    ref={financeInputRef}
-                    type={inputFocus ? "number" : "text"}
-                    step={1000}
-                    value={inputFocus ? financeAmout : currencyFormatter(financeAmout, maxAmount)}
-                    onFocus={() => setInputFocus(true)}
-                    onBlur={() => {setInputFocus(false)}}
-                    onChange={event => handleFinanceValueChange(event)}
-                    max={maxAmount}
-                />
-            </div>
-        </div>
-        <div className="row">
-            <Slider
-            min={5000}
-            step={1000}
-            max={maxAmount}
-            className="slider"
-            value={financeAmout}
-            onChange={amount => setFinanceAmount(amount)}/>
-        </div>
-        <div className="row">
-            <div className="rowLabel">
-                <label>Duration</label>
-            </div>
-            <div>
-            <Select
-                value={{value: duration, label: `${duration} Months`}}
-                onChange={selectedValue => setDuration(selectedValue.value)}
-                options={monthOptions(maxDuration)}
-                classNamePrefix="loanDropdown"
-            />
-            </div>
-        </div>
-        <div className="row">
-            <Slider
-                min={12}
-                step={12}
-                value={duration}
-                max={maxDuration}
+            <div className="row">
+                <Slider
+                min={5000}
+                step={1000}
+                max={maxAmount}
                 className="slider"
-                onChange={amount => setDuration(amount)}
-            />
-        </div>
-        <div className="row interest">
-            <label>{`Interest: ${interest}%` || ''}</label>
-        </div>
-        <div className="row">
-
-            asd
-            <div>
-                <a href="" >Check if you qualify</a>
+                value={financeAmout}
+                onChange={amount => setFinanceAmount(amount)}/>
             </div>
-            <div>
-                <button className="button">
-                    Let's get started
-                </button>
+            <div className="row">
+                <div className="rowLabel">
+                    <label>Duration</label>
+                </div>
+                <div>
+                <Select
+                    value={{value: duration, label: `${duration} Months`}}
+                    onChange={selectedValue => setDuration(selectedValue.value)}
+                    options={monthOptions(maxDuration)}
+                    classNamePrefix="loanDropdown"
+                />
+                </div>
             </div>
-        </div>
-    </Fragment>
+            <div className="row">
+                <Slider
+                    min={12}
+                    step={12}
+                    value={duration}
+                    max={maxDuration}
+                    className="slider"
+                    onChange={amount => setDuration(amount)}
+                />
+            </div>
+            <div className="row interest">
+                <label>{interest && `Interest: ${interest}%`}</label>
+            </div>
+            <div className="row">
+                <div>
+                    <a href="" >Check if you qualify</a>
+                </div>
+                <div>
+                    <button className="button">
+                        Let's get started
+                    </button>
+                </div>
+            </div>
+        </Fragment>
     )
 }
 

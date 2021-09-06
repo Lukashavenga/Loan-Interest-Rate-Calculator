@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fontsource/roboto": "^4.5.0",
+    "babel-eslint": "^10.1.0",
     "gatsby": "^3.13.0",
     "gatsby-plugin-sass": "^4.13.0",
     "rc-slider": "^9.7.2",
@@ -21,6 +22,9 @@
     "sass": "^1.39.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.4",
+    "eslint": "^7.32.0",
     "eslint-config-react-app": "^6.0.0"
   }
 }
