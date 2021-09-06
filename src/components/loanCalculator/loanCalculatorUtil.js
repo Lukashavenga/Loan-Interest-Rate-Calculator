@@ -41,3 +41,18 @@ export const formOptions = () => [
         label: LEGAL_FORM.SOLE_PROPRIETORSHIP
     },
 ];
+
+// Gets the position between min and max value
+// based on which month group is selected
+export const calcInterestByMonths = (min, max, months) => {
+        const half = (min + max) * 0.5;
+        const quarter = (half + max) * 0.5;
+        const threeQuarter = (half + min) * 0.5;
+        switch(months / 12) {
+            case 1: return max; // 12 months
+            case 2: return quarter; // 24 months
+            case 3: return half; // 36 months
+            case 4: return threeQuarter; // 48 months
+            case 5: return min; // 60 months
+        }
+}

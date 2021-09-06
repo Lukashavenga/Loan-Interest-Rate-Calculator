@@ -3,14 +3,19 @@ import React, {
     useState,
     useRef,
     useEffect,
-} from "react";
-import Select from "react-select";
+} from 'react';
+import Select from 'react-select';
 import Slider from 'rc-slider';
 import './loanCalculator.scss';
 import 'rc-slider/assets/index.css';
-import { LEGAL_FORM, LOAN_PURPOSE } from "../../util/enums";
-import { currencyFormatter } from "../../util/formatter";
-import { monthOptions, purposeOptions, formOptions } from './loanCalculatorUtil';
+import { LEGAL_FORM, LOAN_PURPOSE } from '../../util/enums';
+import { currencyFormatter } from '../../util/formatter';
+import {
+    monthOptions,
+    purposeOptions,
+    formOptions,
+    calcInterestByMonths,
+} from './loanCalculatorUtil';
 
 const LoanCalculator = () => {
     const [financeAmout, setFinanceAmount] = useState(5000);
@@ -44,34 +49,16 @@ const LoanCalculator = () => {
             }
         }
     }, [purpose, form])
-
-    // Gets the position between min and max value
-    // based on which month group is selected
-    const calcInterestByMonths = (min, max, months) => {
-            const half = (min + max) * 0.5;
-            const quarter = (half + max) * 0.5;
-            const threeQuarter = (half + min) * 0.5;
-            switch(months / 12) {
-                case 1: return max; // 12 months
-                case 2: return quarter; // 24 months
-                case 3: return half; // 36 months
-                case 4: return threeQuarter; // 48 months
-                case 5: return min; // 60 months
-            }
-    }
     
     useEffect(() => {
         if (financeAmout < 50000) {
-            const interest = calcInterestByMonths(6, 8, duration);
-            setInterest(interest);
+            setInterest(calcInterestByMonths(6, 8, duration));
         }
         if (financeAmout >= 50000 && financeAmout <= 149999) {
-            const interest = calcInterestByMonths(5, 7, duration);
-            setInterest(interest);
+            setInterest(calcInterestByMonths(5, 7, duration));
         }
         if (financeAmout >= 150000 && financeAmout <= 500000) {
-            const interest = calcInterestByMonths(4, 6, duration);
-            setInterest(interest);
+            setInterest(calcInterestByMonths(4, 6, duration));
         }
     }, [financeAmout, duration])
 
